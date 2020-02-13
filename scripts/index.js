@@ -3,12 +3,36 @@ function getAllVehicles() {
 
   let xhr = new XMLHttpRequest();
 
-  xhr.onload = function(data) {
-    console.log(data);
+  xhr.onreadystatechange = function() {
+    if (this.status == 200 && this.readyState == 4) {
+      populateData(this.response);
+    }
   }
 
   xhr.open('GET', 'https://localhost:5001/api/vehicle', true);
   xhr.send();
+}
+
+function populateData(strData) {
+
+  let container = document.getElementById('data-container');
+  let jData = JSON.parse(strData);
+
+  for(let index in jData) {
+    let data = jData[index];
+    let divTag = document.createElement('div');
+    let ulTag = document.createElement('ul');
+
+    ulTag.innerHTML = `
+      <li>id: ${data.id}</li>
+      <li>year: ${data.year}</li>
+      <li>make: ${data.make}</li>
+      <li>model: ${data.model}</li>
+    `;
+    divTag.append(ulTag);
+    container.append(divTag);
+    console.log(jData[index]);
+  }
 }
 
 function loadVehicleHandler() {
@@ -40,7 +64,8 @@ function submitFormHandler(e) {
     console.log(data);
   }
 
-  xhr.open('GET', 'https://localhost:5001/api/vehicle', true);
+  xhr.open('POST', 'https://localhost:5001/api/vehicle/', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(payload));
 }
 
