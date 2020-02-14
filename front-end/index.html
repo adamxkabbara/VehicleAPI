@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicles</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    .container {
+      width: 100%;
+    }
+    #vehicle-container, #create-container {
+      width: 50%;
+      float: left;
+      margin: auto;
+    }
+  </style>
+  <script src="./scripts/index.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Vehicle API</h1>
+  </header>
+  <div id="option-container">
+    <button id="getAll">Get All</button>
+    <button id="getOne">Get One</button>
+    <label for="getVehicleInput"></label>
+    <input type="text" id="getVehicleInput" placeholder="Vehicle Id">
+  </div>
+  <div class="container">
+    <div id="vehicle-container">
+      <h3>Vehicle Data:</h3>
+      <div id="data-container"></div>
+    </div>
+    <div id="create-container">
+      <form method="POST" id="vehicleForm">
+        <h3>Create Vehicle</h3>
+        <label for="idInput">Id: </label>
+        <input type="number" name="Id" id="idInput" required> <br>
+        <label for="yearInput">Year: </label>
+        <input type="number" name="Year" id="yearInput" required> <br>
+        <label for="makeInput">Make:</label>
+        <input type="text" name="Make" id="makeInput" required> <br>
+        <label for="modelInput">Model: </label>
+        <input type="text" name="Model" id="modelInput" required> <br>
+        <input type="submit" value="submit">
+      </form>
+    </div>
+  </div>
+</body>
+</html>
