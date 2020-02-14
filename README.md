@@ -22,4 +22,9 @@ PUT:
 https://localhost:5001/api/vehicle/{id}
 ```
 
+```
+DELETE:
+https://localhost:5001/api/vehicle/{id}
+```
+
 ### vehicle-api.postman_collection.json is my test file.
